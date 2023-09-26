@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 
+import { Button } from '@chakra-ui/react'
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -89,6 +91,7 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
+        <Button colorScheme='blue'>Button</Button>
       </div>
     </main>
   )
