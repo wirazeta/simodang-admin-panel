@@ -2,9 +2,11 @@ import Image from 'next/image'
 import styles from './page.module.css'
 
 import { Button } from '@chakra-ui/react'
+import Dashboard from './dashboard/page'
 
 export default function Home() {
   return (
+    // <Dashboard></Dashboard>
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
