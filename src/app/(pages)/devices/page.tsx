@@ -5,7 +5,6 @@ import TableComponent from "@/components/table/TableComponent";
 import { api } from "@/assets/api";
 import UpdateDevicePage from "./update/page";
 import { Button, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import ReactPaginate from "react-paginate";
 
 export default function DevicesPage() {
     const [data, setData] = useState([{}]);
@@ -31,11 +30,6 @@ export default function DevicesPage() {
         fetchData();
     }, [itemOffSet, itemsPerPage]);
 
-    // useEffect(() => {
-    //     setCurrentItems(data.slice(itemOffSet, endOffSet));
-    //     setPageCount(Math.ceil(data.length / itemsPerPage));
-    // }, [itemOffSet, itemsPerPage]);
-
     const handlePageClick = (event: any) => {
         const newOffSet = event.selected * itemsPerPage % data.length;
         setItemOffSet(newOffSet);
@@ -47,8 +41,6 @@ export default function DevicesPage() {
     }
 
     const tableComponent = () => {
-        // console.log("current item: "+currentItems);
-        // console.log("Ini data utama" + data);
         return (
             (
                 <>
@@ -101,26 +93,8 @@ export default function DevicesPage() {
         <>
             <TableComponent
                 tableComponent={tableComponent}
-            />
-            <ReactPaginate
-                nextLabel="next >"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
-                marginPagesDisplayed={2}
+                handlePageClick={handlePageClick}
                 pageCount={pageCount}
-                previousLabel="< previous"
-                pageClassName="page-item"
-                pageLinkClassName="page-link"
-                previousClassName="page-item"
-                previousLinkClassName="page-link"
-                nextClassName="page-item"
-                nextLinkClassName="page-link"
-                breakLabel="..."
-                breakClassName="page-item"
-                breakLinkClassName="page-link"
-                containerClassName="pagination"
-                activeClassName="active"
-                renderOnZeroPageCount={null}
             />
             <UpdateDevicePage
                 data={deviceItem}
